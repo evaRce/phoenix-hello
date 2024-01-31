@@ -10,9 +10,14 @@ defmodule Hello.User do
   end
 
   @doc false
-  def changeset(user, attrs) do
-    user
-    |> cast(attrs, [:email, :crypted_password])
+  def changeset(args) do
+    %Hello.User{}
+    |> cast(args, [:email, :crypted_password])
+  end
+
+  def validation(args) do
+    args
+    |> changeset()
     |> validate_required([:email, :crypted_password])
     |> unique_constraint(:email)
   end

@@ -1,5 +1,9 @@
 <div>
-	<p>Name: <%= @name %></p>
-	<p>Surname: <%= @surname %></p>
-	<p>Age: <%= @age %></p>
+	<.simple_form :let={f} for={@changeset} action={registration_path(HelloWeb.Endpoint, :register)}>
+		<.input field={f[:email]} label="Email"/>
+		<.input field={f[:crypted_password]} label="Password" type="password"/>
+		<:actions>
+			<.button>Submit</.button>
+		</:actions>
+	</.simple_form>
 </div>

@@ -17,7 +17,8 @@ defmodule HelloWeb.Router do
   scope "/", HelloWeb do
     pipe_through :browser
 
-    get "/:name/:surname/:age", RegistrationController, :register
+    get "/", RegistrationController, :load
+    post "/", RegistrationController, :register
   end
 
   # Other scopes may use custom stacks.
