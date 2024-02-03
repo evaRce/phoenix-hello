@@ -5,15 +5,15 @@ defmodule HelloWeb.RegistrationController do
   def load(conn, _args) do
     # The home page is often custom made,
     # so skip the default app layout.
-    render(conn, :register, changeset: User.changeset(%{}) )
+    render(conn, :register, changeset: User.changeset(%{}))
   end
 
   def register(conn, args) do
-    IO.inspect(args)
-    case (User.validation(args["user"])).valid? do
-      true -> render(conn, :register, changeset: User.changeset(args) )
-      _ -> render(conn, :hello)
-    end
+    user = User.validation(args["user"])
 
+    case user.valid? do
+      true -> render(conn, :hello)
+      _ -> render(conn, :register, changeset: user)
+    end
   end
 end
