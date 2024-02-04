@@ -1,13 +1,7 @@
 <div>
   <.simple_form :let={f} for={@changeset} action={registration_path(HelloWeb.Endpoint, :register)}>
-    <div>
-      <.input field={f[:email]} label="Email" />
-      <%= error_tag(:email, f) %>
-    </div>
-    <div>
-      <.input field={f[:crypted_password]} label="Password" type="password" />
-      <%= error_tag(:crypted_password, f) %>
-    </div>
+    <.input field={f[:email]} label="Email" />
+    <.input field={f[:crypted_password]} label="Password" type="password" />
     <:actions>
       <.button>Submit</.button>
     </:actions>
